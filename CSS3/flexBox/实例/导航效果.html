@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+body,
+ul,
+li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    display: -webkit-flex;
+    display: flex;
+    line-height: 40px;
+}
+
+li {
+    /*flex: auto;*/
+    flex-grow:1;
+    text-align: center;   
+    border-right: 1px solid #fff;
+    background-color: lightblue
+}
+
+.last {
+    border: none;
+}
+</style>
+
+<body>
+    <ul>
+        <!-- 在HTML代码里面多加两个li -->
+        <li>音乐</li>
+        <li>影视</li>
+        <li>游戏</li>
+        <li class="last">旅游</li>
+    </ul>
+</body>
+
+</html>

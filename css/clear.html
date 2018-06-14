@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    /*
+    清浮动：
+
+    1、给父级也加浮动(不是特别实用)
+
+    2、给父级加display:inline-block
+
+    3、在浮动元素下加：
+
+      <div class="clear"></div>
+
+       并设置样式：
+
+       .clear{
+        clear: both;
+        height: 0px;
+        font-size: 0;
+    }
+
+    4、在浮动元素下加: <br clear="both" />
+
+    5、在IE6、7下，浮动的元素的父级有宽度的话就不用清浮动
+
+    6、目前最长用的清除浮动的方法给浮动元素的父级加上clear类：
+
+      .clear{zoom:1;}
+      .clear:after{content:'';display:block;clear:both;}
+    */
+    .div1{
+        border: 5px solid #000;
+        /*width: 300px;*/
+        margin: 0 auto;
+    }
+    .div2{
+        width: 200px;
+        height: 200px;
+        background: pink;
+        float: left;
+    }
+
+    .clear::after{   /*IE6/7以外的浮动清除*/
+        content: '';
+        display: block;
+        clear: both;
+    }
+
+    .clear{     /*IE6/7下的浮动清除*/
+        zoom:1;
+    }
+
+</style>
+<body>
+<div class="div1 clear">
+    <div class="div2">div2</div>
+</div>
+</body>
+</html>

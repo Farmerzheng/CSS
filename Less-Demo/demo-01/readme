@@ -1,0 +1,39 @@
+### 例子详解
+
+```
+/*style.less*/
+@bg: #aaa;
+
+body {
+    background-color: @bg;
+}
+```
+
+
+
+less 中声明变量用 @
+使用变量时，变量名前需要加上 @
+使用  less 写的样式表，最终要转化成 css
+因为浏览器只能识别 css ，不能识别less语法
+
+如何将 style.less转化成css文件？
+
++ npm init (生成package.json)
+
++ npm install --save-dev less (将less包作为开发依赖安装)
+
++ node_modules/.bin/lessc  style.less>style.css （执行less为我们提供的命令）
+
+  另一种执行命令的方式？
+
+  修改package.json中的scripts字段
+
+  ```
+    "scripts": {
+  
+      "less": "lessc style.less>style.css"
+  
+    }
+  ```
+
+  执行 npm run less

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style type="text/css">
+/* flex-grow属性定义项目的放大比例，默认为0，即不作任何的放大。
+   flex容器下的项目是根据这个值的比例对容器的剩余空间进行瓜分的,在使用这个属性的时候，一般也最好不要对flex项目设置宽度/高度，否则会影响flex容器的比例分配*/
+
+.flex-box {
+    background: orange;
+    /*定义为flex布局*/
+    display: -webkit-flex;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+.flex-item {
+    margin: 10px;
+    background: purple;
+    color: #fff;
+    height: 100px;
+}
+
+div:first-child {
+    flex-grow: 1;
+}
+
+div:nth-child(2) {
+    flex-grow: 2;
+}
+
+div:last-child {
+    flex-grow: 3;
+}
+</style>
+
+<body>
+    <div class="flex-box">
+        <div class="flex-item">item1</div>
+        <div class="flex-item">item2</div>
+        <div class="flex-item">item3</div>
+    </div>
+    </div>
+</body>
+
+</html>

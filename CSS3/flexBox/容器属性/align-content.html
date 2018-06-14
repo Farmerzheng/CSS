@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>align-content</title>
+</head>
+<style type="text/css">
+/*align-content属性定义了多个轴线的对齐方式。
+  value的取值包括： 
+- flex-start：与交叉轴的起点对齐 
+- flex-end：与交叉轴的终点对齐 
+- center：交叉轴上居中 
+- space-between：交叉轴上两端对齐，轴线之间的间隔两端分布 
+- space-around：每个轴线两侧的间隔都相等。那么，轴线之间的间隔是轴线与边框之间间隔的两倍 
+- stretch：默认值，轴线占满整个交叉轴 
+咦！怎么都这么熟悉呢？对比原来发现这个属性的取值是跟前两个属性的取值有很大相似的。但它们其的效果还是有区别的,对比下align-items里面的center，是不是发现不同呢？每一行项目之间的距离变小了！是变小了吗？其实是轴线居中了！在这里，因为项目的换行，形成了多条轴线，而align-content就是作用在轴线上的，所以它会让每一条轴线居中。而align-items是将所有的项目看做一个整体，即使项目换行，也是将整个项目看做是一条轴线，最后将这个整体居中 */
+
+.flex-box {
+    background: orange;
+    display: flex;
+    display: -webkit-flex;
+    /*定义为flex布局*/
+    flex-flow: row wrap;
+    /*align-content:flex-start;*/
+    /*align-content:flex-end;*/
+    /*align-content:center;*/
+    align-content:stretch;
+    /*align-content:space-between;*/
+    /*align-content:space-around;*/
+    height: 300px;
+}
+
+.flex-item {
+    margin: 5px;
+    /*height: 50px;*/
+    width: 50px;
+    background: purple;
+    color: #fff;
+}
+</style>
+
+<body>
+    <div class="flex-box">
+        <div class="flex-item">item1</div>
+        <div class="flex-item">item2</div>
+        <div class="flex-item">item3</div>
+        <div class="flex-item">item4</div>
+        <div class="flex-item">item5</div>
+        <div class="flex-item">item6</div>
+        <div class="flex-item">item7</div>
+        <div class="flex-item">item8</div>
+        <div class="flex-item">item9</div>
+        <div class="flex-item">item10</div>
+        <div class="flex-item">item11</div>
+        <div class="flex-item">item12</div>
+        <div class="flex-item">item13</div>
+        <div class="flex-item">item14</div>
+        <div class="flex-item">item15</div>
+    </div>
+</body>
+
+</html>

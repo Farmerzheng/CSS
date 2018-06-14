@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>Document</title>
+</head>
+<style type="text/css">
+/*响应式布局 网页的布局会随着屏幕宽度的变化而变化*/
+
+	*{
+		margin:0;
+		padding:0;
+	}
+	body{
+		font-size: 30px
+	}
+	#header{
+		width:1000px;
+		height:100px;
+		background: pink;
+		margin:0 auto;
+	}
+
+	#body{
+		width:1000px;
+	/*	height:400px;*/
+		/*background: pink;*/
+		margin:10px auto;
+	}
+
+	#body div{
+		float: left;
+		height:400px;
+		background: pink
+	}
+
+	#body .left{
+		width:200px;		
+	}
+
+	#body .middle{
+		width:580px;
+		margin:0 10px;
+	}
+	#body .right{
+		width:200px;
+	}
+
+	#footer{
+		width:1000px;
+		height:100px;
+		background: pink;
+		margin:0 auto;
+	}
+
+
+
+   /*//css3媒体查询功能 实现不同设备上显示不同宽度 ipad*/
+	@media screen and ( max-width:768px ){
+
+		  body{
+			font-size: 20px
+		  }
+
+          #header{
+          	width:600px;
+          }  
+
+          #body{
+          	width:600px;
+          }
+
+          #body .right{
+          	display: none
+          }
+          #body .left{
+             width:150px;
+          }
+          #body .middle{
+             width:440px;
+             margin:0 0 0 10px;
+          }
+
+          #footer{
+			width:600px;
+	     }
+	}
+/*phone*/
+	@media screen and (max-width:500px){
+
+		  body{
+			font-size: 15px
+		  }
+		#header{
+			width:90%;
+		}
+		#body{
+			width:90%;
+		}
+		#body .right{
+			width: 100%;
+			display: block
+		}
+		#body .left{
+			display: block;
+			width:100%;
+		}
+		#body .middle{
+			display: block;
+			width:100%;
+			margin:10px 0 10px 0;
+		}
+
+		 #footer{
+			width:90%;
+	     }
+	} 
+
+	.clear{
+		zoom:1;
+	}
+	.clear::after{
+		content: "";
+		display: block;
+		clear: both
+	}
+
+</style>
+
+<body>
+	<div id="header">header</div>
+	<div id="body" class="clear">
+		<div class="left">left</div>
+		<div class="middle">middle</div>
+		<div class="right">right</div>
+	</div>
+	<div id="footer">footer</div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    /*1. style.left 返回的是字符串，如28px，offsetLeft返回的是数值28，如果需要对取得的值进行计算，*/
+    /*还用offsetLeft比较方便。*/
+    /*2. style.left是读写的，offsetLeft是只读的，所以要改变div的位置，只能修改style.left。*/
+    /*3. style.left的值需要事先定义，否则取到的值为空。而且必须要定义在html里，如果定义在css里，style.left的值仍然 为空*/
+    *{
+        padding:0;
+        margin:0
+    }
+    .wraper{
+      width:500px;
+        height:500px;
+        background:yellow;
+        position:relative;
+    }
+    .child{
+        position:absolute;
+        left:100px;
+        width:300px;
+        height:300px;
+        background:red;
+    }
+</style>
+<body>
+<div class="wraper">
+    <div class="child" style="left:100px"></div>
+</div>
+<script>
+    var wraper=document.getElementsByClassName("wraper")[0];
+    var child=document.getElementsByClassName("child")[0];
+    console.log(child.offsetLeft);
+    console.log(child.style.left)
+</script>
+</body>
+</html>

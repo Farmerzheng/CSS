@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3D旋转</title>
+</head>
+<style>
+    /*正方体的css参数*/
+    /*当为元素定义 perspective 属性时，其子元素会获得透视效果，而不是元素本身*/
+    /*transform-style: flat（子元素将不保留其3D位置）|preserve-3d（子元素将保留其3D位置）;*/
+    /*perspective(300px)表示，镜头距离元素表面的位置是300像素*/
+    /*perspective-origin属性规定了镜头在平面上的位置*/
+
+    #main{
+        position: relative;
+        margin: 100px auto;
+        width:400px;
+        height:400px;
+        perspective: 1000px;
+        -webkit-perspective: 800px;
+        -moz-perspective: 800px;
+        -ms-perspective: 800px;
+        -o-perspective: 800px;
+        perspective-origin: 50% 50%;
+        -webkit-perspective-origin: 50% 50%;
+        -moz-perspective-origin: 50% 50%;
+        -ms-perspective-origin: 50% 50%;
+        -o-perspective-origin: 50% 50%;
+    }
+    #cube{
+        transform-style: preserve-3d;
+        -webkit-transform-style: preserve-3d;
+        -moz-transform-style: preserve-3d;
+        -ms-transform-style: preserve-3d;
+        -o-transform-style: preserve-3d;
+        width:300px;
+        height:300px;
+        position:relative;
+        top: 100px;
+        margin:0px auto;
+
+        /*background: #fff;*/
+    }
+    #cube div{
+        position: absolute;
+        width:300px;
+        height:300px;
+        opacity:0.9;
+    }
+    #cube .cube_front{
+        background:url(univercity-5.jpg);
+        background-size: contain;
+        transform:translateZ(150px);
+        -webkit-transform:translateZ(150px);
+        -moz-transform:translateZ(150px);
+        -o-transform:translateZ(150px);
+        -ms-transform:translateZ(150px);
+    }
+    #cube .cube_behind{
+        background:url(univercity-2.jpg);
+        background-size: contain;
+        transform:translateZ(-150px) rotateY(180deg);
+        -webkit-transform:translateZ(-150px) rotateY(180deg);
+        -moz-transform:translateZ(-150px) rotateY(180deg);
+        -ms-transform:translateZ(-150px) rotateY(180deg);
+        -o-transform:translateZ(-150px) rotateY(180deg);
+    }
+    #cube .cube_left{
+        background:url(univercity-7.jpg);
+        background-size: contain;
+        transform:translateZ(-150px) rotateY(-90deg);
+        -webkit-transform:translateZ(-150px) rotateY(-90deg);
+        -moz-transform:translateZ(-150px) rotateY(-90deg);
+        -ms-transform:translateZ(-150px) rotateY(-90deg);
+        -o-transform:translateZ(-150px) rotateY(-90deg);
+        transform-origin: center left;
+        -webkit-transform-origin: center left;
+        -moz-transform-origin: center left;
+        -ms-transform-origin: center left;
+        -o-transform-origin: center left;
+    }
+    #cube .cube_right{
+        background:url(univercity-4.jpg);
+        background-size: contain;
+        transform:translateZ(-150px) rotateY(90deg);
+        -moz-transform:translateZ(-150px) rotateY(90deg);
+        -webkit-transform:translateZ(-150px) rotateY(90deg);
+        -ms-transform:translateZ(-150px) rotateY(90deg);
+        -o-transform:translateZ(-150px) rotateY(90deg);
+        transform-origin: center right;
+        -webkit-transform-origin: center right;
+        -moz-transform-origin: center right;
+        -ms-transform-origin: center right;
+        -o-transform-origin: center right;
+    }
+    #cube .cube_top{
+        background:url(univercity-1.jpg);
+        background-size: contain;
+        transform:translateZ(-150px) rotateX(90deg);
+        -webkit-transform:translateZ(-150px) rotateX(90deg);
+        -ms-transform:translateZ(-150px) rotateX(90deg);
+        -moz-transform:translateZ(-150px) rotateX(90deg);
+        -o-transform:translateZ(-150px) rotateX(90deg);
+        transform-origin: top center;
+        -webkit-transform-origin: top center;
+        -moz-transform-origin: top center;
+        -ms-transform-origin: top center;
+        -o-transform-origin: top center;
+    }
+    #cube .cube_bottom{
+        background:url(univercity-3.jpg);
+        background-size: contain;
+        transform:translateZ(-150px) rotateX(-90deg);
+        -o-transform:translateZ(-150px) rotateX(-90deg);
+        -webkit-transform:translateZ(-150px) rotateX(-90deg);
+        -moz-transform:translateZ(-150px) rotateX(-90deg);
+        -ms-transform:translateZ(-150px) rotateX(-90deg);
+        transform-origin: bottom center;
+        -webkit-transform-origin: bottom center;
+        -moz-transform-origin: bottom center;
+        -ms-transform-origin: bottom center;
+        -o-transform-origin: bottom center;
+    }
+
+    @-webkit-keyframes move {
+        from{-webkit-transform: rotateY(0deg)}
+        to{-webkit-transform: rotateY(360deg)}
+    }
+    @-moz-keyframes move {
+        from{-moz-transform: rotateY(0deg)}
+        to{-moz-transform: rotateY(360deg)}
+    }
+    @-ms-keyframes move {
+        from{-ms-transform: rotateY(0deg)}
+        to{-ms-transform: rotateY(360deg)}
+    }
+    @-o-keyframes move {
+        from{-o-transform: rotateY(0deg)}
+        to{-o-transform: rotateY(360deg)}
+    }
+   #cube{
+       animation: move 5s infinite linear;
+       -webkit-animation: move 5s infinite linear;
+       -ms-animation: move 5s infinite linear;
+       -moz-animation: move 5s infinite linear;
+       -o-animation: move 5s infinite linear;
+   }
+</style>
+<body>
+<div id="main">
+    <div id="cube">
+        <div class="cube_front">前</div>
+        <div class="cube_behind">后</div>
+        <div class="cube_top">上</div>
+        <div class="cube_bottom">下</div>
+        <div class="cube_left">左</div>
+        <div class="cube_right">右</div>
+    </div>
+</div>
+</body>
+</html>

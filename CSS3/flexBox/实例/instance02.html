@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style>
+body {
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.header {
+    height: 80px;
+    background-color: #f4f3f0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header .header_l,
+.header .header_r {
+    /*line-height: 80px;*/
+    align-self: center;
+}
+
+.header .header_r {
+    padding: 10px;
+    background-color: #46b980;
+}
+
+.content {
+    flex: auto;
+    /*text-align: center;*/
+    display: flex;
+    justify-content: center;
+}
+
+.content .content_sticky{
+  width: 750px;
+ border:1px solid red;
+ flex-grow: 0;
+}
+
+.content .content_sticky_con{
+	width:750px;
+	height:126px;
+	background-color: #f4f3f0;
+}
+
+.footer {
+    height: 66px;
+    background-color: #404040;
+    display: flex;
+    justify-content: center;
+    /*line-height: 66px;*/
+    align-items: center;
+}
+
+.footer .footer_item {
+    /*align-self: center;*/
+    padding: 5px;
+    margin: 2px;
+    background-color: #fff;
+}
+</style>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header_l">Solved by FlexBox</div>
+            <div class="header_r">View resource</div>
+        </div>
+        <div class="content">
+        	<div class="content_sticky">
+        		<h2>Sticky Footer</h2>
+        		<div class="content_sticky_con"></div>
+        	</div>
+        </div>
+        <div class="footer">
+            <div class="footer_item">goole</div>
+            <div class="footer_item">apple</div>
+            <div class="footer_item">alibaba</div>
+            <div class="footer_item">tecent</div>
+            <div class="footer_item">facebook</div>
+        </div>
+    </div>
+</body>
+
+</html>

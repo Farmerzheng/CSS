@@ -1,0 +1,15 @@
+{
+    "name": "demo-01",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "less": "lessc style.less>style.css"
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "browsersync": "0.0.1-security",
+        "less": "^3.0.4"
+    }
+}

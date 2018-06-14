@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Document</title>
+    <script src="rem.js"></script>
+</head>
+<style>
+blockquote,
+body,
+button,
+dd,
+dl,
+dt,
+fieldset,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+input,
+legend,
+li,
+ol,
+p,
+pre,
+td,
+textarea,
+th,
+ul,
+figure {
+    margin: 0;
+    padding: 0;
+}
+
+ul,
+li {
+    list-style: none
+}
+
+body,
+button,
+input,
+select,
+textarea {
+    font: 12px/1.5 tahoma, arial, 'Hiragino Sans GB', '\5b8b\4f53', sans-serif;
+}
+
+body {
+    color: #3C3C3C;
+    -webkit-font-smoothing: antialiased;
+    background-color: #fff;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+
+address,
+cite,
+dfn,
+em,
+var {
+    font-style: normal;
+}
+
+.clearfix:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.clearfix {
+    zoom: 1;
+}
+
+.img_bg {
+    background: url("data:image/png;base64,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") 50% #f2f2f2 no-repeat;
+}
+
+.news_list .news_item {
+    display: flex;
+    padding: 0.5rem 0;
+    margin: 0 0.4rem;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.news_item .img {
+    width: 4.1rem;
+    height: 2.75rem;
+    margin-right: 0.5rem;
+    background-size: 100% 100%;
+}
+
+.news_item .img_con {
+    width: 10.5rem;
+    height: 2.75rem;
+}
+.news_title{
+    font-size: 0.7rem;
+    color: #1a1a1a
+}
+.news_com{
+    color: #888;
+    font-size: 0.4rem;
+}
+.news_com_num{
+    float: right;
+}
+.img_width {
+    width: 100%
+}
+</style>
+
+<body>
+    <section class="news_list">
+        <a href="" class="news_item">
+            <figure class="img img_bg">
+                <img class="img_width" src="img/rnyN-fypatmw6492897.jpg" alt="">
+            </figure>
+            <aside class="img_con">
+                <h2 class="news_title">《习近平谈治国理政》第二卷讲了什么</h2>
+                <div class="news_com clearfix">
+                    <span class="news_com_num">1122</span>
+                </div>
+            </aside>
+        </a>
+         <a href="" class="news_item">
+            <figure class="img img_bg">
+                <img class="img_width" src="img/rnyN-fypatmw6492897.jpg" alt="">
+            </figure>
+            <aside class="img_con">
+                <h2 class="news_title">《习近平谈治国理政》第二卷讲了什么</h2>
+                <div class="news_com clearfix">
+                    <span class="news_com_num">1122</span>
+                </div>
+            </aside>
+        </a>
+         <a href="" class="news_item">
+            <figure class="img img_bg">
+                <img class="img_width" src="img/rnyN-fypatmw6492897.jpg" alt="">
+            </figure>
+            <aside class="img_con">
+                <h2 class="news_title">《习近平谈治国理政》第二卷讲了什么</h2>
+                <div class="news_com clearfix">
+                    <span class="news_com_num">1122</span>
+                </div>
+            </aside>
+        </a>
+    </section>
+</body>
+
+</html>

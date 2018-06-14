@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Document</title>
+</head>
+<style type="text/css">
+/*fled属性是前三个属性：flex-grow、flex-shrink、flex-basis的简写形式。
+   默认值为 0 1 auto，即不放大，自动缩小。
+   该属性有两个快捷键值：
+   auto(0 1 auto)，
+   none（0 0 auto）
+   建议优先使用这个属性，而不是单独写三个分离的属性*/
+
+.flex-box {
+    background: orange;
+    /*定义为flex布局*/
+    display: -webkit-flex;
+    display: flex;
+}
+
+.flex-item {
+    margin: 10px;
+    background: purple;
+    color: #fff;
+    height: 100px;
+    /*flex: none;*/
+    flex:auto;
+}
+</style>
+
+<body>
+    <div class="flex-box">
+        <div class="flex-item">item1</div>
+        <div class="flex-item">item2</div>
+        <div class="flex-item">item3</div>
+    </div>
+    </div>
+</body>
+
+</html>

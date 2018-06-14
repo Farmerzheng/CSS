@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style type="text/css">
+/*
+flex-basis属性定义了在分配多余空间之前，项目占据的主轴空间(main size)。浏览器根据这个属性，计算主轴(main asix)是否有多余空间。
+默认值为auto，即项目原本大小。
+它可以设置为跟width属性一样的值（100px），即项目占据固定空间（容器宽度不够自动被压缩）
+该属性的用法就是使用width(flex-direction:row; 的时候)或height(direction为column的时候)属性那样，在容器宽度不够的时候，它会按照flex-shrink属性的默认值压缩项目
+*/
+
+.flex-box {
+    background: orange;
+    /*定义为flex布局*/
+    display: -webkit-flex;
+    display: flex;
+    flex-flow: row nowrap;
+    /*justify-content: space-around;*/
+}
+
+.flex-item {
+    margin: 10px;
+    background: purple;
+    color: #fff;
+    height: 100px;
+    /*width:200px;*/
+    flex-basis: 200px;
+}
+</style>
+
+<body>
+    <div class="flex-box">
+        <div class="flex-item">item1</div>
+        <div class="flex-item">item2</div>
+        <div class="flex-item">item3</div>
+    </div>
+    </div>
+</body>
+
+</html>

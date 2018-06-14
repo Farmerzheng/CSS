@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>@media query</title>
+</head>
+<style>
+    body{
+        margin:0px;
+        padding:0px;
+    }
+    div{
+        text-align: center;
+    }
+    #header{
+        width:960px;
+        height:120px;
+        line-height: 120px;
+        margin:0 auto;
+        margin-bottom: 10px;
+        background:yellowgreen;
+    }
+    #section{
+        width:960px;
+        line-height: 400px;
+        margin:0 auto;
+        margin-bottom:10px;
+    }
+
+    #section .section_left{
+        height:400px;
+        width:210px;
+        float:left;
+        background:yellowgreen;
+    }
+    .clear{zoom:1;}
+    .clear:after{content:'';display:block;clear:both;}
+    #section .section_main{
+        height:400px;
+        width:520px;
+        float:left;
+        margin-left: 10px;
+        background:yellowgreen;
+    }
+    #section .section_right{
+        height:400px;
+        width:210px;
+        float:right;
+        background:yellowgreen;
+    }
+    #footer{
+        height:120px;
+        line-height: 120px;
+        width:960px;
+        margin:0 auto;
+        background:yellowgreen;
+    }
+</style>
+
+<link rel="stylesheet" type="text/css" media="screen and (min-width: 1000px)" href="CSS/pc.css">
+<link rel="stylesheet" type="text/css" media="screen and (min-width: 640px)and (max-width: 1000px)" href="CSS/ipad.css" >
+<link rel="stylesheet" type="text/css"  media="screen and (max-width: 640px)" href="CSS/phone.css">
+
+<body>
+<div id="header">header</div>
+<div id="section" class="clear">
+    <div class="section_left">left</div>
+    <div class="section_main">main</div>
+    <div class="section_right">right</div>
+</div>
+<div id="footer">footer</div>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="zh" class="no-js">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>HTML5 SVG和CSS3超酷文字遮罩动画特效|DEMO17_jQuery之家-自由分享jQuery、html5、css3的插件库</title>
+	<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+	<link rel="stylesheet" type="text/css" href="css/default.css">
+	<link rel="stylesheet" type="text/css" href="css/style17.css" />
+	<!--[if IE]>
+		<script src="http://libs.useso.com/js/html5shiv/3.7/html5shiv.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+	<div class="htmleaf-container">
+		<header class="htmleaf-header">
+			<h1>HTML5 SVG和CSS3超酷文字遮罩动画特效 <span>Demo 17: Selectable SVG text with animated shapes and clip-path</span></h1>
+			<div class="htmleaf-links">
+				<a class="htmleaf-icon icon-home" href="http://www.htmleaf.com/" title="jQuery之家" target="_blank"><span> jQuery之家</span></a>
+				<a class="htmleaf-icon icon-arrow-right3" href="http://www.htmleaf.com/html5/SVG/201502181393.html" title="返回下载页" target="_blank"><span> 返回下载页</span></a>
+			</div>
+			<nav class="htmleaf-demos">
+				<a href="index.html">Demo 1</a>
+				<a href="index2.html">Demo 2</a>
+				<a href="index3.html">Demo 3</a>
+				<a href="index4.html">Demo 4</a>
+				<a href="index5.html">Demo 5</a>
+				<a href="index6.html">Demo 6</a>
+				<a href="index7.html">Demo 7</a>
+				<a href="index8.html">Demo 8</a>
+				<a href="index9.html">Demo 9</a>
+				<a href="index10.html">Demo 10</a>
+				<a href="index11.html">Demo 11</a>
+				<a href="index12.html">Demo 12</a>
+				<a href="index13.html">Demo 13</a>
+				<a href="index14.html">Demo 14</a>
+				<a href="index15.html">Demo 15</a>
+				<a href="index16.html">Demo 16</a>
+				<a class="current-demo" href="index17.html">Demo 17</a>
+				<a href="index18.html">Demo 18</a>
+				<a href="index19.html">Demo 19</a>
+				<a href="index20.html">Demo 20</a>
+				<a href="index21.html">Demo 21</a>
+				<a href="index22.html">Demo 22</a>
+				<a href="index23.html">Demo 23</a>
+			</nav>
+		</header>
+		<div class="content">
+			<svg viewBox="0 0 600 300">
+
+                <!-- Symbol with text -->
+                <symbol id="s-text">
+                    <text text-anchor="middle" x="50%" y="50%" dy=".35em" class="text--line">
+                        Text
+                    </text>
+                </symbol>
+
+                <!-- Clippath  with text -->
+                <clippath id="cp-text">
+                    <text text-anchor="middle" x="50%" y="50%" dy=".35em" class="text--line">
+                        Text
+                    </text>
+                </clippath>
+
+                <!-- Group for shadow -->
+                <g clip-path="url(#cp-text)" class="shadow">
+                    <rect width="100%" height="100%" class="anim-shape anim-shape--shadow"></rect>
+                </g>
+
+                <!-- Group with clippath for text-->
+                <g clip-path="url(#cp-text)" class="colortext">
+                    <!-- Animated shapes inside text -->
+                    <rect width="100%" height="100%" class="anim-shape"></rect>
+                    <rect width="80%" height="100%" class="anim-shape"></rect>
+                    <rect width="60%" height="100%" class="anim-shape"></rect>
+                    <rect width="40%" height="100%" class="anim-shape"></rect>
+                    <rect width="20%" height="100%" class="anim-shape"></rect>
+                </g>
+
+                <!-- Transparent copy of text to keep patterned text selectable -->
+                <use xlink:href="#s-text" class="text--transparent"></use>
+
+            </svg>
+		</div>
+		<div class="related">
+		    <h3>如果你喜欢这个插件，那么你可能也喜欢:</h3>
+		    <a class="media-item" href="http://www.htmleaf.com/ziliaoku/qianduanjiaocheng/201502131376.html">
+		      <img class="media-item__img" src="img/1.jpg" width="300" alt="HTML5 SVG和CSS3制作动态文字遮罩背景特效"/>
+		      <h3 class="media-item__title">HTML5 SVG和CSS3制作动态文字遮罩背景特效</h3>
+		    </a>
+		    <a class="media-item" href="http://www.htmleaf.com/ziliaoku/qianduanjiaocheng/201502121371.html">
+		      <img class="media-item__img" src="img/2.jpg" width="300" alt="HTML5 SVG制作精美的文字遮罩效果"/>
+		      <h3 class="media-item__title">HTML5 SVG制作精美的文字遮罩效果</h3>
+		    </a>
+		</div>
+	</div>
+	
+</body>
+</html>

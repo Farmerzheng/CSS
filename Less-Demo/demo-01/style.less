@@ -1,0 +1,73 @@
+@bg-color: #eee;
+@R: 5px;
+@font-family: "微软雅黑";
+.bordered {
+    border: solid 1px #fc3;
+}
+.border-radius (@radius) {
+    border-radius: @radius;
+    -moz-border-radius: @radius;
+    -webkit-border-radius: @radius;
+}
+
+body {
+    background-color: @bg-color;
+    font-family: @font-family;
+}
+.container {
+    margin: 0 auto;
+    text-align: center;
+    //媒体查询
+    @media (min-width: 768px) {
+        width: 750px;
+    }
+    @media (min-width: 992px) {
+        width: 950px;
+    }
+    @media (min-width: 1200px) {
+        width: 1180px;
+    }
+}
+.box {
+    width: 220px;
+    height: 220px;
+    margin: 10px 10px;
+    display: inline-block;
+    //嵌套
+    .img {
+        width: 200px;
+        margin: 0 auto;
+        img {
+            width: 200px;
+            height: 150px;
+        }
+    }
+    .des {
+        .title {
+            font-size: 16px;
+            font-weight: bold;
+            color: red;
+        }
+        .price {
+            font-size: 12px;
+        }
+        .more {
+            color: #999;
+            font-size: 14px;
+        }
+    }
+    background-color: aqua;
+    //媒体查询
+    @media (min-width: 768px) {
+        background-color: red;
+    }
+
+    @media (min-width: 992px) {
+        background-color: yellow;
+    }
+    @media (min-width: 1200px) {
+        background-color: yellow;
+    }
+    .bordered; //不带参数混合
+    .border-radius(@R); //带参数的混合
+}

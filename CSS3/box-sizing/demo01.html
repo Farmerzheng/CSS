@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<!-- 
+box-sizing属性可以为三个值之一：content-box（default），border-box，padding-box。
+
+content-box，border和padding不计算入width之内
+
+padding-box，padding计算入width内
+
+border-box，border和padding计算入width之内 
+-->
+	<style type="text/css" media="screen">
+	div{
+		width: 100px;
+        height: 100px;
+        padding: 20px;
+	}
+    .content-box{
+        box-sizing:content-box;
+        -moz-box-sizing:content-box;      
+        border: 5px solid #E6A43F;
+        background: blue;
+    }
+    .padding-box{
+        box-sizing:padding-box;
+        -moz-box-sizing:padding-box;      
+        border: 5px solid #186645;
+        background: red;                
+    }
+    .border-box{
+        box-sizing:border-box;
+        -moz-box-sizing:border-box;      
+        border: 5px solid #3DA3EF;
+        background: yellow;
+    }
+	</style>
+<body>
+   <div class="content-box">
+       啦啦啦  啦啦啦  啦啦啦  啦啦啦  啦啦啦  啦啦啦  啦啦啦  啦啦啦  啦啦啦  啦啦啦  
+   </div>
+   <div class="padding-box">  啦啦啦  啦 啦啦啦  啦啦啦  啦啦啦  啦啦啦
+   </div>
+   <div class="border-box">  啦啦啦  啦啦啦  啦啦啦  啦啦啦  啦啦啦  啦啦啦  啦啦啦  啦啦啦  啦啦啦  啦啦啦  啦啦啦  啦啦啦  啦啦啦 
+   </div>
+</body>
+</html>

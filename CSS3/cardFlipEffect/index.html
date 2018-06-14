@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no"/>
+    <title>纸牌翻转效果</title>
+</head>
+<style>
+    .box {
+        /*position:absolute;*/
+        width: 80%;
+        height: 70%;
+        top: 15%;
+        left: 10%;
+        border:3px solid red;
+    }
+    .box a{
+        position: absolute;
+        left: 0;
+        height:0;
+        width: 100%;
+        height:100%;
+    }
+    .box a img {
+        width: 100%;
+        height:100%;
+    }
+
+    .flip {
+        -webkit-backface-visibility: hidden;
+        -webkit-transform: translateX(0);
+        backface-visibility: hidden;
+        transform: translateX(0);
+    }
+    .out {
+        -webkit-animation-timing-function: ease-in;
+        -webkit-animation-duration: 225ms;
+        animation-timing-function: ease-in;
+        animation-duration: 225ms;
+        -webkit-transform: rotateY(-90deg) scale(.9);
+        -webkit-animation-name: flipouttoleft;
+        transform: rotateY(-90deg) scale(.9);
+        animation-name: flipouttoleft;
+    }
+    .in {
+        -webkit-animation-timing-function: ease-out;
+        -webkit-animation-duration: 350ms;
+        animation-timing-function: ease-out;
+        animation-duration: 350ms;
+        -webkit-animation-name: flipintoright;
+        animation-name: flipintoright;
+    }
+
+    @-webkit-keyframes flipintoright {
+        from { -webkit-transform: rotateY(90deg) scale(.9); }
+        to { -webkit-transform: rotateY(0deg); }
+    }
+    @keyframes flipintoright {
+        from { transform: rotateY(90deg) scale(.9); }
+        to { transform: rotateY(0deg); }
+    }
+    @-webkit-keyframes flipouttoleft {
+        from { -webkit-transform: rotateY(0deg); }
+        to { -webkit-transform: rotateY(-90deg) scale(.9); }
+    }
+    @keyframes flipouttoleft {
+        from { transform: rotateY(0deg); }
+        to { transform: rotateY(-90deg) scale(.9); }
+    }
+</style>
+<body>
+<div id="box" class="box" title="点击翻面">
+    <a class="list flip out"><img src="img/puke-k.png" alt="纸牌正面" /></a>
+    <a class="list flip"><img src="img/puke-back.png" alt="纸牌背面" /></a>
+</div>
+
+<script src="js/jQuery 1.12.3.min.js"></script>
+
+<script>
+    // 在前面显示的元素，隐藏在后面的元素
+    var eleBack = null, eleFront = null,
+
+    // 纸牌元素们
+    eleList = $(".list");
+
+    // 确定前面与后面元素
+    var funBackOrFront = function() {
+        eleList.each(function() {
+            if ($(this).hasClass("out")) {
+                eleBack = $(this);
+            } else {
+                eleFront = $(this);
+            }
+        });
+    };
+    funBackOrFront();
+
+
+    $("#box").bind("click", function() {
+        // 切换的顺序如下
+        // 1. 当前显示的元素翻转90度隐藏, 动画时间225毫秒
+        // 2. 结束后，之前显示在后面的元素逆向90度翻转显示在前
+        // 3. 完成翻面效果
+        eleFront.addClass("out").removeClass("in");
+        setTimeout(function() {
+            eleBack.addClass("in").removeClass("out");
+
+            // 重新确定正反元素
+            funBackOrFront();
+        }, 225);
+        return false;
+    });
+</script>
+</body>
+</html>

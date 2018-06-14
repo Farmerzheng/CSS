@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS3实现酷炫动画按钮特效 - 站长素材</title>
+<link rel="stylesheet" href="css/style.css" media="screen" type="text/css" />
+</head>
+<body>
+<div class="htmleaf-container">
+	<div class="htmleaf-content bgcolor-3">
+		<h4 class="intro">这个提交按钮效果有两组动画：当屏幕大于800px的时候是一个动画效果，当屏幕小于800像素的时候是另一种动画效果。缩放你的浏览器看看不同的提交按钮动画效果吧！</h4>
+		<button>
+			<img class="splash" src="images/watersplash_3.svg" alt="Splash!" />
+			<img class="splash splash-2" src="images/watersplash_3.svg" alt="Splash!" />
+			<img class="sub" src="images/sublogo_16.svg" class="Submarine" />
+			<img class="submerge" src="images/submerge.svg" alt="Water" />
+			<span class="main-text"> <span class="submit">Sub</span>mit </span> <span class="sent-text"> <span class="sent">Sent!</span> </span>
+		</button>
+	</div>
+</div>
+<script src='js/jquery.min.js'></script> 
+<script type="text/javascript">
+$(function(){
+button = $('button');
+
+button.click(function(e) {
+e.preventDefault();
+$(this).toggleClass('active');
+});
+
+$(window).resize(function(e) {
+button.removeClass('active');
+});
+});
+</script>
+
+<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
+<p>适用浏览器：360、FireFox、Chrome、Safari、Opera、傲游、搜狗、世界之窗. 不支持IE8及以下浏览器。</p>
+<p>来源：<a href="http://sc.chinaz.com/" target="_blank">站长素材</a></p>
+</div>
+</body>
+</html>

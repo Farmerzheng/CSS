@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style type="text/css">
+body {
+    margin: 0;
+}
+
+.demo {
+    display: flex;
+}
+.demo .center {
+    height: 200px;
+    background: #fff800;
+    flex: auto;
+}
+.demo .side {
+    height: 200px;
+    width: 200px;
+    background: #F7E8B4;
+    flex: none;
+}
+</style>
+
+<body>
+    <div class="demo">
+        <div class="side">左边固定宽度为100px，这里设置了高度为auto</div>
+        <div class="center">右边宽度自适应，并且左右两个区域是等高的，这里设置了高度为200px</div>
+        <div class="side">左边固定宽度为100px，这里设置了高度为auto</div>
+    </div>
+</body>
+
+</html>

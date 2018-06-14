@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+</head>
+<style>
+body {
+    margin: 0;
+}
+
+.container {
+    height: 100vh;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    height: 60px;
+    line-height: 60px;
+    background-color: #f4f3f0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header .header_lf,
+.header .header_rg {
+    margin: 0 10px;
+}
+
+.header .header_lf_til {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.header .header_lf_des {
+    font-size: 12px;
+    color: #333;
+    margin-left: 20px;
+}
+
+.header .header_rg_1,
+.header .header_rg_2 {
+    height: 20px;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.header .header_rg_1 {
+    background-color: #46b980;
+    color: #fff;
+}
+
+.header .header_rg_2 {
+    background-color: #eee;
+    color: #999;
+}
+
+.footer {
+    height: 80px;
+    background-color: #404040;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #eee;
+}
+
+.footer .footer_item {
+    height: 20px;
+    line-height: 20px;
+    margin: 0 5px;
+    padding: 5px;
+    border: 1px solid #999;
+    border-radius: 5px;
+}
+
+.content {
+    flex: auto;
+    display: flex;
+    justify-content: center;
+    background-color: #fff;
+}
+
+.content .content_til {
+    width: 500px;
+    height: 150px;
+    background-color: #f4f3f0;
+}
+</style>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header_lf">
+                <span class="header_lf_til">solve by flexbox</span>
+                <span class="header_lf_des">hack-CSS</span>
+            </div>
+            <div class="header_rg">
+                <span class="header_rg_1">view project source</span>
+                <span class="header_rg_2">spread the world</span>
+            </div>
+        </div>
+        <div class="content">
+            <div>
+                <h2>Sticky Footer</h2>
+                <div class="content_til">
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="footer_item">google</div>
+            <div class="footer_item">baidu</div>
+            <div class="footer_item">sina</div>
+            <div class="footer_item">facebook</div>
+            <div class="footer_item">ebay</div>
+        </div>
+    </div>
+</body>
+
+</html>

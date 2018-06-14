@@ -1,0 +1,112 @@
+
+body{
+   font-family:  "Source Sans Pro","Helvetica Neue",Arial,"Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+}
+
+#head{
+
+/*  1vh 等于1/100的视口高度。栗子：浏览器高度900px, 1 vh = 900px/100 = 9 px。同理，如果视口宽度未750， 1vw = 750px/100 = 7.5 px。*/
+
+  width:100%;
+  height:80vh;
+  padding:15vh 0;
+  
+  /*linear-gradient*/
+  background:linear-gradient(135deg,#00b27a 0%,#35b658 100%); 
+}
+#head h1{
+  text-align: center;
+  font-size: 2.5em;
+  letter-spacing: 3px;
+  color:white;
+ /* padding:2em auto;*/
+ margin:0.4em 0;
+}
+#head h2{
+  text-align: center;
+  font-size: 3em;
+  letter-spacing: 3px;
+  color:white;
+  padding:0.5em 0;
+}
+.flip-line{
+  text-align: center;
+  font-size:2em;
+  color:#99ffdf;
+  padding:1em 0;
+}
+.flip-line .flip-group{
+    width:12em;
+    display: inline-block;
+    overflow: hidden;
+    text-align: left;
+    position:relative;
+    height:2.5em;
+    line-height: 2.5em
+}
+
+.flip-line .flip-group ul{
+	position:absolute;
+	left:4em;
+	top:2.5em;
+	height:7.5em;
+  color:white;
+   /* overflow: hidden;*/
+  -webkit-animation:flip 8s infinite ease-in;
+}
+
+.flip-line .flip-group ul li{
+	height:2.5em;
+	line-height: 2.5em
+}
+
+.flip-line .flip-group span{
+	position:absolute;
+	right:0;
+	top:0;
+}
+
+.flip-line .flip-group:after{
+	content:"";
+	width:7em;
+	position:absolute;
+	left:4em;
+	top:2.4em;
+	border-bottom:4px solid #6FD3B3;
+}
+
+@keyframes flip{
+
+    0% ,2.5%{
+     top:2.5em;
+   }
+
+    2.5% ,32.5%{
+     top:0em;
+   }
+
+    35% ,65%{
+     top:-2.5em;
+   }
+
+    67.5% ,97.5%{
+     top:-5em;
+   }
+
+    100%{
+   	top:-7.5em;
+   }
+
+}
+
+@media (max-width:768px){
+
+  body{
+
+    font-size: 12px;
+  }
+  #head{
+    height:75vh;
+  }
+  
+}

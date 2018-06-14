@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style type="text/css">
+/*该属性定义主轴的方向，即项目的排列方向。value的取值包括：row，row-reverse，column，column-reverse，其中row是默认值，水平方向（起点在左端），column是垂直方向（起点在顶端），带-reverse的值则表示反方向
+如果伸缩容器把“flex-direction”设置为“column”后，伸缩项目将需要设置他们的高度，伸缩项目的宽度将会自动设置为伸缩容器的宽度*/
+.flex-box{
+        background:orange;
+        display: flex;         
+        flex-direction: column;
+    }
+.flex-item{
+    margin-top:10px;
+    height:100px;
+    /*width:100px;*/
+    background: purple;
+    color:#fff;
+}
+</style>
+<body>
+<div class="flex-box">
+    <div class="flex-item">item1</div>
+    <div class="flex-item">item2</div>
+    <div class="flex-item">item3</div>
+</div>
+<script>
+    let a=1; 
+</script>
+</body>
+</html>

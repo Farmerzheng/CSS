@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style type="text/css">
+/*order属性定义项目的排列顺序，数值越小，排列越靠前，默认值为0*/
+
+.flex-box {
+    background: orange;
+    /*定义为flex布局*/
+    display: -webkit-flex;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+.flex-item {
+    margin: 10px;
+    height: 100px;
+    width: 100px;
+    background: purple;
+    color: #fff;
+}
+
+div:first-child {
+    order: 0;
+    /*item1的序号为0*/
+}
+
+div:nth-child(2) {
+    order:3;
+}
+
+div:last-child {
+    order: 2;
+}
+</style>
+
+<body>
+    <div class="flex-box">
+        <div class="flex-item">item1</div>
+        <div class="flex-item">item2</div>
+        <div class="flex-item">item3</div>
+    </div>
+    </div>
+</body>
+
+</html>
