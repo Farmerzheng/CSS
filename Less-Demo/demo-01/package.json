@@ -4,7 +4,7 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "less": "lessc style.less>style.css"
+        "less": "lessc style.less>style.css -x"
     },
     "author": "",
     "license": "ISC",

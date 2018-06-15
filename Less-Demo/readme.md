@@ -4,27 +4,171 @@ http://www.bootcss.com/p/lesscss/
 
 ## 概览
 
-Less 是一个Css 预编译器,
+Less 是一个 Css 预编译器,
 
-意思指的是它可以扩展Css语言,
+意思指的是它可以扩展 Css 语言,
 
 添加功能如允许变量(variables),混合(mixins),函数(functions) 和许多其他的技术，
 
-让你的Css更具维护性，主题性，扩展性。
+让你的 Css 更具维护性，主题性，扩展性。
 
-Less 可运行在 Node 环境,浏览器环境和Rhino环境.
+Less 可运行在 Node 环境,浏览器环境和 Rhino 环境.
 
-同时也有3种可选工具供你编译文件和监视任何改变。
-
-
+同时也有 3 种可选工具供你编译文件和监视任何改变。
 
 ## 使用
 
+### 浏览器中使用
+
++ 开发环境中使用
++ 生产环境中使用
+
+#### 生产环境中使用less
+
+浏览器是不能够解析less文件的，我们必须将less文件转换成CSS文件才能在浏览器中运行
+
+因此项目上线的时候，我们需要将less代码转换成CSS代码
+
+如何将less代码转换成css代码？
+
+1. 在项目根目录下执行 npm init  ，生成一个 package.json 文件
+
+2. 将less包作为项目的开发依赖安装
+
+   > npm install --save-dev  less  
+
+​     `项目的名称`一定不要和`包名`一样！！！！
+
+​     如果项目的名称是less  那么在less 项目下将不能安装less包 
+
+3. 运行安装好的less包，将 less文件转换成 CSS 文件
+
+   方法一：  
+
+   ​     在命令行输入  node_modules/.bin/lessc  style.less > style.css
+
+   方法二：
+
+   ​     修改 package.json 中的scripts字段
+
+   > ​     scripts:{
+   >
+   > ​       'test-less':'lessc style.less>style.css'
+   >
+   > ​     }
+
+   ​     然后在命令行执行` npm run test-less`
+
+   ```
+   注意： 只有全局安装的node包才能直接使用包内命令！！！！
+         本地安装的node包使用有两种方式：
+         1. node_modules/.bin/ 全局命令
+         2. 修改package.json中scripts字段，通过npm run ***的方式
+   ```
+
+​      如果你想输出一个压缩后的 CSS，只要加到 `-x` 选项即可。
+
+```
+   "scripts": {
+        "less": "lessc style.less>style.css -x"
+    },
+```
 
 
-### 在node中使用
 
-你可以在Node中调用编译器，例如：
+#### 开发环境中使用less
+
+开发的时候不能每次都将写好的 less 编译成 css 进行测试
+
+需要实时看到写好的样式
+
+1. 引入 `rel` 属性的值是 `stylesheet/less` 的 `.less` 样式表 :
+
+```
+<link rel="stylesheet/less" type="text/css" href="styles.less" />
+```
+
+2. 引入less.js（less.js能够将less文件转换成 CSS 文件）
+
+```
+<script src="less.js" type="text/javascript"></script>
+```
+
+less.js 的 CDN 地址如下：
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.2.0/less.min.js"></script>
+
+3. 特别注意
+
+- 确保 `.less` 样式表在 `less.js` 脚本前面
+
+- 当你引入多个 `.less` 样式表时，它们都是独立编译的。所以，在每个文件中定义的变量、混合、命名空间都不会被其它的文件共享。
+
+- 需要在本地服务器环境下运行（需要在localhost：下运行，而不是直接通过files://方式打开）
+
+  创建本地服务器环境 (browsersync)？
+
+  npm install -save-dev browser-sync
+
+  browser-sync start --server --files "**/\*.css, **/\*.html"
+
+
+
+​      本地服务器？
+
+​      服务器：服务器本质上就是一台计算机
+
+​                     服务器能够对客户端的请求做出响应
+
+​     本地服务器：将自己的电脑作为一台服务器使用
+
+​                            本地服务器的域名为 localhost 
+
+​     如何开启本地服务器？
+
+​            有很多开启本地服务器的软件（包）
+
+​            我们这里以 browsersync 为例开启一个本地服务器
+
+           1. npm init
+
+           2. npm install --save-dev browser-sync
+
+           3. node_modules/.bin/browser-sync  start  --server
+
+               执行开启服务器的命令后，会自动在浏览器打开项目根目录下的index.html 
+
+              此时index.html 运行在服务器环境下      
+
+​          通过本地直接打开index.html
+
+![1529027901866](C:\Users\王争\AppData\Local\Temp\1529027901866.png)
+
+
+
+​             通过本地服务器打开index.html (index.html代表网站的首页，首页默认不显示在路径当中)
+
+![1529027858319](C:\Users\王争\AppData\Local\Temp\1529027858319.png)
+
+
+
+如果在本地直接代开index.html文件会在浏览器控制台打印出如下错误：
+
+`origin requests are only supported for protocol schemes: http, data, chrome, chrome-extension, https.`
+
+此错误的含义是： 必须通过‘http, data, chrome, chrome-extension, https.`’协议去打开网页，也就是此网页需要在服务器环境下运行！！！
+
+ 如果要是生产环境用less.js可以么？
+
+可以！ 但是不好，因为没必要（生产环境需要简洁的代码，没必要下载一个less.js文件，然后再让less.js去解析一系列的less文件，这样降低了用户体验 ）
+
+
+
+
+
+### 在 node 中使用
+
+你可以在 Node 中调用编译器，例如：
 
 ```
 var less = require('less');
@@ -41,64 +185,6 @@ less.render('.class { width: (1 + 1) }', function (e, output) {
   width: 2;
 }
 ```
-
-### 客户端使用
-
-浏览器端使用是在使用LESS开发时最直观的一种方式。如果是在生产环境中，尤其是对性能要求比较高的场合， *建议使用node或者其它第三方工具先编译成CSS再上线使用* 。
-
-#### 编译成CSS(项目上线时需要编译成css)
-
-一旦安装完成，就可以在命令行中调用，例如:
-
-```
-$ lessc styles.less
-```
-
-这样的话编译后的CSS将会输出到 'stdout' 中，你可以选择将这个输出重定向到文件中:
-
-```
-$ lessc styles.less > styles.css
-```
-
-如果你想输出一个压缩后的CSS，只要加到 `-x` 选项即可。
-
-#### 开发环境（引入less.js）
-
-开发的时候不能每次都将 写好的 less 编译成css进行测试
-
-需要实时看到写好的样式
-
-首先，引入 `rel` 属性的值是 `stylesheet/less` 的 `.less` 样式表 :
-
-```
-<link rel="stylesheet/less" type="text/css" href="styles.less" />
-```
-
-接下来，[下载 less.js](https://github.com/less/less.js/archive/master.zip) 并将其包涵在您的页面 `<head>` 元素的 `<script></script>` 标记中：
-
-```
-<script src="less.js" type="text/javascript"></script>
-```
-
-less CDN
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.2.0/less.min.js"></script> 
-
-##### Tips 特别注意
-
-- 确保包涵 `.less` 样式表在 `less.js` 脚本前面
-
-- 当你引入多个 `.less` 样式表时，它们都是独立编译的。所以，在每个文件中定义的变量、混合、命名空间都不会被其它的文件共享。
-
-- 需要在本地服务器环境下运行
-
-    创建本地服务器环境 (browsersync)？
-
-    npm install -save-dev browser-sync
-
-    browser-sync start --server --files  "**/*.css,  **/*.html"
-
-
 
 ## 变量
 
@@ -128,9 +214,9 @@ h2 {
 
 ## 混合
 
-混合可以将一个定义好的classA轻松的引入到另一个classB中，
+混合可以将一个定义好的 classA 轻松的引入到另一个 classB 中，
 
-从而简单实现classB继承classA中的所有属性。
+从而简单实现 classB 继承 classA 中的所有属性。
 
 我们还可以带参数地调用，就像使用函数一样。
 
@@ -167,10 +253,9 @@ h2 {
 }
 ```
 
-然后在其他class中像这样调用它:
+然后在其他 class 中像这样调用它:
 
 ```
-
 .button {
   .border-radius(6px);  
 }
@@ -194,7 +279,7 @@ h2 {
 }
 ```
 
-radius的值就会是5px.
+radius 的值就会是 5px.
 
 ## 媒体查询
 
@@ -204,6 +289,9 @@ radius的值就会是5px.
 .screencolor{
     @media (min-width:768px) {
       color: red;
+    }  
+    @media (min-width:992px) {
+      color: yellow;
     }
 }
 ```
@@ -214,6 +302,11 @@ radius的值就会是5px.
 @media screen and (min-width: 768px) {
   .screencolor {
     color: red;
+  }
+}
+@media screen and (min-width: 992px) {
+  .screencolor {
+    color: yellow;
   }
 }
 ```
@@ -233,8 +326,8 @@ radius的值就会是5px.
 #header .navigation {
   font-size: 12px;
 }
-#header .logo { 
-  width: 300px; 
+#header .logo {
+  width: 300px;
 }
 #header .logo:hover {
   text-decoration: none;
@@ -257,11 +350,9 @@ radius的值就会是5px.
 }
 ```
 
-注意 `&` 符号的使用—如果你想写串联选择器，而不是写后代选择器，
+注意  `&`  符号的使用—如果你想写串联选择器，而不是写后代选择器，
 
-就可以用到`&`了. 这点对伪类尤其有用如 `:hover` 和 `:focus`. 
-
-
+就可以用到`&`了. 这点对伪类尤其有用如  `:hover`  和  `:focus`.
 
 ## 函数 & 运算
 
@@ -303,7 +394,7 @@ border: (@width * 2) solid black;
 
 #### Color 函数
 
-LESS 提供了一系列的颜色运算函数. 颜色会先被转化成 *HSL* 色彩空间, 然后在通道级别操作:
+LESS 提供了一系列的颜色运算函数. 颜色会先被转化成 _HSL_ 色彩空间, 然后在通道级别操作:
 
 ```
 lighten(@color, 10%);     // return a color which is 10% *lighter* than @color
@@ -347,11 +438,11 @@ lightness(@color);  // returns the 'lightness' channel of @color
 @new: hsl(hue(@old), 45%, 90%);
 ```
 
-`@new` 将会保持 `@old`的 *色调*, 但是具有不同的饱和度和亮度.
+`@new` 将会保持 `@old`的 _色调_, 但是具有不同的饱和度和亮度.
 
 #### Math 函数
 
-LESS提供了一组方便的数学函数，你可以使用它们处理一些数字类型的值:
+LESS 提供了一组方便的数学函数，你可以使用它们处理一些数字类型的值:
 
 ```
 round(1.67); // returns `2`
@@ -365,13 +456,11 @@ floor(2.6);  // returns `2`
 percentage(0.5); // returns `50%`
 ```
 
-
-
 ## 命名空间
 
-有时候，你可能为了更好组织CSS或者单纯是为了更好的封装，
+有时候，你可能为了更好组织 CSS 或者单纯是为了更好的封装，
 
-将一些变量或者混合模块打包起来, 
+将一些变量或者混合模块打包起来,
 
 你可以像下面这样在`#bundle`中定义一些属性集后重复使用:
 
@@ -422,24 +511,24 @@ LESS 中的作用域跟其他编程语言非常类似，
 
 ## Import
 
-你可以在main文件中通过下面的形势引入 `.less` 文件, `.less` 后缀可带可不带:
+你可以在 main 文件中通过下面的形势引入 `.less` 文件, `.less` 后缀可带可不带:
 
 ```
 @import "lib.less";
 @import "lib";
 ```
 
-如果你想导入一个CSS文件而且不想LESS对它进行处理，只需要使用`.css`后缀就可以:
+如果你想导入一个 CSS 文件而且不想 LESS 对它进行处理，只需要使用`.css`后缀就可以:
 
 ```
 @import "lib.css";
 ```
 
-这样LESS就会跳过它不去处理它
+这样 LESS 就会跳过它不去处理它
 
 ## 字符串插值
 
-变量可以用类似ruby和php的方式嵌入到字符串中，像`@{name}`这样的结构:
+变量可以用类似 ruby 和 php 的方式嵌入到字符串中，像`@{name}`这样的结构:
 
 ```
 @base-url: "http://assets.fnord.com";
@@ -452,30 +541,28 @@ Less.js 基于 Apache 2 许可证发布。版权所有 2009-2015，Alexis Sellie
 
 #### 赋予你的权力：
 
-- 任意下载并使用 Less.js 的全部或部分代码，可以用于个人、公司内部或商业目的
-- 将 Less.js 包含到你的产品中
+-   任意下载并使用 Less.js 的全部或部分代码，可以用于个人、公司内部或商业目的
+-   将 Less.js 包含到你的产品中
 
 #### 严禁：
 
-- 在没有声明版权归属的情况下使用 Less.js 中的任何代码片段
+-   在没有声明版权归属的情况下使用 Less.js 中的任何代码片段
 
 #### 你的义务：
 
-- 如果你的产品中包含 Less.js，必须包含一份 Less.js 的版权协议
-- 在你包含了 Less.js 的产品中明确声明 Less.js 的版权归 Less 核心小组
+-   如果你的产品中包含 Less.js，必须包含一份 Less.js 的版权协议
+-   在你包含了 Less.js 的产品中明确声明 Less.js 的版权归 Less 核心小组
 
 #### 不需要：
 
-- 在你的产品中包含 Less。js 自身或你所修改的源码
-- 提交你对 Less.js 所做的修改到 Less.js 项目（我们还是鼓励提交对 Less.js 的改进）
+-   在你的产品中包含 Less。js 自身或你所修改的源码
+-   提交你对 Less.js 所做的修改到 Less.js 项目（我们还是鼓励提交对 Less.js 的改进）
 
 完整的 Less.js 版权信息位于 [项目仓库内](https://github.com/less/less.js/blob/master/LICENSE)，请参考。
 
+## 什么时候用 less?
 
-
-## 什么时候用less?
-
-不要盲目的在项目中使用LESS
+不要盲目的在项目中使用 LESS
 
 **它更适用于皮肤、模板等整体框架固定死的网站制作，比如论坛、空间**。
 
@@ -483,19 +570,18 @@ Less.js 基于 Apache 2 许可证发布。版权所有 2009-2015，Alexis Sellie
 
 **页面有很多可以复用的组件，比如输入框，按钮等等 **
 
-项目足够大，起码几十张页面，有公共的UI组件，
+项目足够大，起码几十张页面，有公共的 UI 组件，
 
-组件或者页面上有相似的拼装属性的方法(可以写成mixin)，
+组件或者页面上有相似的拼装属性的方法(可以写成 mixin)，
 
 组件或者样式拼装上存在继承关系，
 
-或者有theme的需求
+或者有 theme 的需求
 
-在使用LESS 时请先考虑下这个工具是否适用，
+在使用 LESS 时请先考虑下这个工具是否适用，
 
 别盲目的使用，
 
 不但效率没提高，
 
-还增加了不必要的工作量。 
-
+还增加了不必要的工作量。
