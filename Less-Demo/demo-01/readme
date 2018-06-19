@@ -10,6 +10,12 @@ body {
 ```
 
 
+@bg: #aaa;
+
+body {
+    background-color: @bg;
+}
+
 
 less 中声明变量用 @
 使用变量时，变量名前需要加上 @
@@ -18,22 +24,12 @@ less 中声明变量用 @
 
 如何将 style.less转化成css文件？
 
-+ npm init (生成package.json)
++ npm init
+@bg: #aaa;
 
-+ npm install --save-dev less (将less包作为开发依赖安装)
+body {
+    background-color: @bg;
+}
 
-+ node_modules/.bin/lessc  style.less>style.css （执行less为我们提供的命令）
-
-  另一种执行命令的方式？
-
-  修改package.json中的scripts字段
-
-  ```
-    "scripts": {
-  
-      "less": "lessc style.less>style.css"
-  
-    }
-  ```
-
-  执行 npm run less
++ npm install --save-dev less
++ node_modules/.bin/lessc  style.less>style.css

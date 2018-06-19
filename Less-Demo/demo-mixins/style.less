@@ -1,0 +1,46 @@
+@base: 5%;
+@filler: @base * 2;
+@other: @base + @filler;
+@color: #888/4;
+@background-color: @color + #111;
+
+.bordered {
+    border-bottom: 1px solid red;
+}
+.bordered {
+    border-bottom: 1px solid red;
+}
+.border-radius (@radius) {
+    //类似函数声明
+    border-radius: @radius;
+    -moz-border-radius: @radius;
+    -webkit-border-radius: @radius;
+}
+.nav a {
+    .bordered;
+    .border-radius(10px);
+    color: @color;
+    background-color: @background-color;
+}
+.screencolor {
+    @media (min-width: 768px) {
+        color: red;
+    }
+    @media (min-width: 992px) {
+        color: yellow;
+    }
+}
+
+#header {
+    color: black;
+
+    .navigation {
+        font-size: 12px;
+    }
+    .logo {
+        width: 300px;
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}

@@ -4,32 +4,45 @@ http://www.bootcss.com/p/lesscss/
 
 ## 概览
 
-Less 是一个 Css 预编译器,
+Less 是一个 CSS 预编译语言,
 
-意思指的是它可以扩展 Css 语言,
+意思指的是它可以扩展 CSS 语言,
 
-添加功能如允许变量(variables),混合(mixins),函数(functions) 和许多其他的技术，
+添加功能：变量(variables) , 混合(mixins) , 函数(functions) 和 许多其他的技术，
 
-让你的 Css 更具维护性，主题性，扩展性。
+让你的 CSS 更具维护性，主题性，扩展性。
 
-Less 可运行在 Node 环境,浏览器环境和 Rhino 环境.
-
-同时也有 3 种可选工具供你编译文件和监视任何改变。
+Less 可运行在 Node 环境 , 浏览器环境
 
 ## 使用
 
 ### 浏览器中使用
 
-+ 开发环境中使用
-+ 生产环境中使用
++ 开发环境中使用   (引入less.js)
++ 生产环境中使用（编译成CSS）
 
 #### 生产环境中使用less
 
-浏览器是不能够解析less文件的，我们必须将less文件转换成CSS文件才能在浏览器中运行
+浏览器是不能够解析less文件的(浏览器能够解析html、CSS、js)，
+
+我们必须将less文件转换成CSS文件才能在浏览器中运行
 
 因此项目上线的时候，我们需要将less代码转换成CSS代码
 
 如何将less代码转换成css代码？
+
+通过安装node包（less包），來将LESS转换成CSS
+
+如何使用node包？
+
+1. 创建package.json
+2. 安装node包
+3. 调用node包为我们提供的命令
+4. 有些node包需要配置文件，例如webpack包的webpack.congfig.js文件， babel包的.babelrc文件
+
+
+
+安装less包？
 
 1. 在项目根目录下执行 npm init  ，生成一个 package.json 文件
 
@@ -45,11 +58,21 @@ Less 可运行在 Node 环境,浏览器环境和 Rhino 环境.
 
    方法一：  
 
-   ​     在命令行输入  node_modules/.bin/lessc  style.less > style.css
+   ​     在命令行输入
+
+   ​     (本地安装)
+
+   >  node_modules/.bin/lessc  style.less > style.css
+
+      （全局安装）
+
+   > lessc style.less > style.css	
+
+   
 
    方法二：
 
-   ​     修改 package.json 中的scripts字段
+   ​     修改 package.json 中的`scripts`字段
 
    > ​     scripts:{
    >
@@ -60,8 +83,8 @@ Less 可运行在 Node 环境,浏览器环境和 Rhino 环境.
    ​     然后在命令行执行` npm run test-less`
 
    ```
-   注意： 只有全局安装的node包才能直接使用包内命令！！！！
-         本地安装的node包使用有两种方式：
+   注意： 只有全局安装的node包才能直接使用包内命令！！！！（注册到了系统的环境变量当中）
+         本地安装的node包（安装在了node_modules文件夹下面）使用有两种方式：
          1. node_modules/.bin/ 全局命令
          2. 修改package.json中scripts字段，通过npm run ***的方式
    ```
@@ -71,7 +94,7 @@ Less 可运行在 Node 环境,浏览器环境和 Rhino 环境.
 ```
    "scripts": {
         "less": "lessc style.less>style.css -x"
-    },
+    }
 ```
 
 
@@ -86,6 +109,7 @@ Less 可运行在 Node 环境,浏览器环境和 Rhino 环境.
 
 ```
 <link rel="stylesheet/less" type="text/css" href="styles.less" />
+注意： rel 的属性值 ："stylesheet/less"
 ```
 
 2. 引入less.js（less.js能够将less文件转换成 CSS 文件）
@@ -94,9 +118,15 @@ Less 可运行在 Node 环境,浏览器环境和 Rhino 环境.
 <script src="less.js" type="text/javascript"></script>
 ```
 
-less.js 的 CDN 地址如下：
+less.js 的 CDN （内容分发网络）地址如下：
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.2.0/less.min.js"></script>
+
+使用CDN的好处？
+
+> 	1. 减轻了服务器负载
+>
+>    2.提高了资源文件的加载速度，提高了用户体验
 
 3. 特别注意
 
@@ -104,19 +134,29 @@ less.js 的 CDN 地址如下：
 
 - 当你引入多个 `.less` 样式表时，它们都是独立编译的。所以，在每个文件中定义的变量、混合、命名空间都不会被其它的文件共享。
 
-- 需要在本地服务器环境下运行（需要在localhost：下运行，而不是直接通过files://方式打开）
+- 需要在本地服务器环境下运行（在localhost：下运行，而不是直接通过files://方式打开）
 
-  创建本地服务器环境 (browsersync)？
+  创建本地服务器有很多种方式，以下以 browsersync为例讲解
 
-  npm install -save-dev browser-sync
+  npm install -save-dev browser-sync （将browser-sync作为开发依赖安装）
 
-  browser-sync start --server --files "**/\*.css, **/\*.html"
+  node_modules/.bin/browser-sync start --server --files  "**/\*.css, **/\*.html"
 
+  解释：  `--files  "**/\*.css, **/\*.html"   `
 
+  ​             `*.css`   扩展名是.css的所有文件
+
+  ​            ` *.html ` 扩展名是.html的所有文件
+
+  ​            `/ `根目录下
+
+  ​               `--files  "**/\*.css, **/\*.html"   `  只要css文件,html文件改变，就会自动刷新浏览器
+
+  
 
 ​      本地服务器？
 
-​      服务器：服务器本质上就是一台计算机
+​      服务器：服务器本质上就是一台计算机（常用的服务器软件appache\nginx）
 
 ​                     服务器能够对客户端的请求做出响应
 
@@ -131,14 +171,26 @@ less.js 的 CDN 地址如下：
 ​            我们这里以 browsersync 为例开启一个本地服务器
 
            1. npm init
-
+    
            2. npm install --save-dev browser-sync
-
+    
            3. node_modules/.bin/browser-sync  start  --server
-
+    
                执行开启服务器的命令后，会自动在浏览器打开项目根目录下的index.html 
+               
+               访问本地服务器根目录下的index.html页面？
+               
+               方式一：localhost:端口号(默认)
+               方式二：localhost:端口号/index.html
+               
+               访问本地服务器根目录下的index-02.html页面？
+               
+               localhost:端口号/index-02.html
+               
+               访问本地服务器根目录下的html文件夹下的index-02.html页面？
+               
+               localhost:端口号/html/index-02.html
 
-              此时index.html 运行在服务器环境下      
 
 ​          通过本地直接打开index.html
 
@@ -168,9 +220,28 @@ less.js 的 CDN 地址如下：
 
 ### 在 node 中使用
 
+> cmd 窗口如何创建文件？
+>
+> cd  空格  >  文件名
+>
+> cmd窗口如何创建文件夹？
+>
+> mkdir 空格 文件夹名称
+>
+> 删除某个文件、文件夹？
+>
+> del 文件名/文件夹名称
+>
+> 在node当中运行demo.js文件？
+>
+> node demo.js
+
 你可以在 Node 中调用编译器，例如：
 
+1. 创建less-demo.js
+
 ```
+/*less-demo.js*/
 var less = require('less');
 
 less.render('.class { width: (1 + 1) }', function (e, output) {
@@ -178,13 +249,77 @@ less.render('.class { width: (1 + 1) }', function (e, output) {
 });
 ```
 
-将会输出
+2. 直接执行  node  less-demo.js 会报错，错误信息如下：
+
+   ```
+   module.js:549
+       throw err;
+       ^
+   
+   Error: Cannot find module 'less'
+       at Function.Module._resolveFilename (module.js:547:15)
+       at Function.Module._load (module.js:474:25)
+       at Module.require (module.js:596:17)
+       at require (internal/module.js:11:18)
+       at Object.<anonymous> (D:\H5\CSS\Less-Demo\demo-03\less-demo.js:2:12)
+       at Module._compile (module.js:652:30)
+       at Object.Module._extensions..js (module.js:663:10)
+       at Module.load (module.js:565:32)
+       at tryModuleLoad (module.js:505:12)
+       at Function.Module._load (module.js:497:3)
+   ```
+
+   通过错误信息，我们发现，项目缺少 less包
+
+   
+
+3. 安装less 包
+
+   ```
+   npm init
+   npm install --save-dev less
+   ```
+
+   
+
+4. 运行less-demo.js
+
+   输入  node less-demo.js 
+
+   将会在控制台打印出如下内容：
 
 ```
 .class {
   width: 2;
 }
 ```
+
+5.  node 包常见用法？
+
+   第一种用法： 直接输入包提供的命令
+
+   > node_modules/.bin/lessc style.less>style.css
+
+   第二种用法：每个node包都为我们提供了一个对象，既然是对象，那么肯定会有很多方法
+
+   我们可以通过require() 方法，将node包引入相应的js文件，在文件里面也可以运用node包的方法
+
+   例如：
+
+   ```
+   /*less-demo.js*/
+   var less = require('less');
+   
+   less.render('.class { width: (1 + 1) }', function (e, output) {
+     console.log(output.css);
+   });
+   ```
+
+   运行less-demo.js
+
+   >  node less-demo.js
+
+
 
 ## 变量
 
@@ -198,16 +333,10 @@ less.render('.class { width: (1 + 1) }', function (e, output) {
 #header {
   color: @color;
 }
-h2 {
-  color: @color;
-}
 
 /* 生成的 CSS */
 
 #header {
-  color: #4D926F;
-}
-h2 {
   color: #4D926F;
 }
 ```
@@ -246,7 +375,7 @@ h2 {
 在 LESS 中，你还可以像函数一样定义一个带参数的属性集合:
 
 ```
-.border-radius (@radius) {
+.border-radius (@radius) {//类似函数声明
   border-radius: @radius;
   -moz-border-radius: @radius;
   -webkit-border-radius: @radius;
@@ -257,7 +386,7 @@ h2 {
 
 ```
 .button {
-  .border-radius(6px);  
+  .border-radius(6px);  //类似函数调用
 }
 ```
 
@@ -350,9 +479,7 @@ radius 的值就会是 5px.
 }
 ```
 
-注意  `&`  符号的使用—如果你想写串联选择器，而不是写后代选择器，
-
-就可以用到`&`了. 这点对伪类尤其有用如  `:hover`  和  `:focus`.
+注意  `&` 伪类如  `:hover`  和  `:focus`.
 
 ## 函数 & 运算
 
@@ -364,10 +491,8 @@ radius 的值就会是 5px.
 @base: 5%;
 @filler: @base * 2;
 @other: @base + @filler;
-
-color: #888 / 4;
-background-color: @base-color + #111;
-height: 100% / 2 + @filler;
+@color: #888 / 4;
+@background-color: @color + #111;
 ```
 
 LESS 的运算已经超出了我们的期望，它能够分辨出颜色和单位。如果像下面这样单位运算的话:
@@ -394,7 +519,7 @@ border: (@width * 2) solid black;
 
 #### Color 函数
 
-LESS 提供了一系列的颜色运算函数. 颜色会先被转化成 _HSL_ 色彩空间, 然后在通道级别操作:
+LESS 提供了一系列的`颜色运算函数`. 颜色会先被转化成 _HSL_ 色彩空间, 然后在通道级别操作:
 
 ```
 lighten(@color, 10%);     // return a color which is 10% *lighter* than @color
@@ -417,7 +542,6 @@ mix(@color1, @color2);    // return a mix of @color1 and @color2
 
 ```
 @base: #f04615;
-
 .class {
   color: saturate(@base, 5%);
   background-color: lighten(spin(@base, 8), 25%);
@@ -470,7 +594,9 @@ percentage(0.5); // returns `50%`
     display: block;
     border: 1px solid black;
     background-color: grey;
-    &:hover { background-color: white }
+    &:hover {
+        background-color: white
+    }
   }
   .tab {  }
   .citation { }
@@ -500,18 +626,20 @@ LESS 中的作用域跟其他编程语言非常类似，
 #page {
   @var: white;
   #header {
-    color: @var; // white
+    color: @var; //white
   }
 }
 
 #footer {
-  color: @var; // red  
+  color: @var; //red
 }
 ```
 
 ## Import
 
-你可以在 main 文件中通过下面的形势引入 `.less` 文件, `.less` 后缀可带可不带:
+样式模块化！！！
+
+引入 `.less` 文件, `.less` 后缀可带可不带:
 
 ```
 @import "lib.less";
@@ -526,7 +654,7 @@ LESS 中的作用域跟其他编程语言非常类似，
 
 这样 LESS 就会跳过它不去处理它
 
-## 字符串插值
+## 字符串拼接
 
 变量可以用类似 ruby 和 php 的方式嵌入到字符串中，像`@{name}`这样的结构:
 
@@ -555,7 +683,7 @@ Less.js 基于 Apache 2 许可证发布。版权所有 2009-2015，Alexis Sellie
 
 #### 不需要：
 
--   在你的产品中包含 Less。js 自身或你所修改的源码
+-   在你的产品中包含 Less.js 自身或你所修改的源码
 -   提交你对 Less.js 所做的修改到 Less.js 项目（我们还是鼓励提交对 Less.js 的改进）
 
 完整的 Less.js 版权信息位于 [项目仓库内](https://github.com/less/less.js/blob/master/LICENSE)，请参考。
@@ -585,3 +713,110 @@ Less.js 基于 Apache 2 许可证发布。版权所有 2009-2015，Alexis Sellie
 不但效率没提高，
 
 还增加了不必要的工作量。
+
+## bootstrap 中如何用less
+
+1. 高度模块化
+
+```
+/*bootstrap.less*/
+
+// Core variables and mixins
+@import "variables.less";
+@import "mixins.less";
+
+// Reset and dependencies
+@import "normalize.less";
+@import "print.less";
+@import "glyphicons.less";
+
+// Core CSS
+@import "scaffolding.less";
+@import "type.less";
+@import "code.less";
+@import "grid.less";
+@import "tables.less";
+@import "forms.less";
+@import "buttons.less";
+
+// Components
+@import "component-animations.less";
+@import "dropdowns.less";
+@import "button-groups.less";
+@import "input-groups.less";
+@import "navs.less";
+@import "navbar.less";
+@import "breadcrumbs.less";
+@import "pagination.less";
+@import "pager.less";
+@import "labels.less";
+@import "badges.less";
+@import "jumbotron.less";
+@import "thumbnails.less";
+@import "alerts.less";
+@import "progress-bars.less";
+@import "media.less";
+@import "list-group.less";
+@import "panels.less";
+@import "responsive-embed.less";
+@import "wells.less";
+@import "close.less";
+
+// Components w/ JavaScript
+@import "modals.less";
+@import "tooltip.less";
+@import "popovers.less";
+@import "carousel.less";
+
+// Utility classes
+@import "utilities.less";
+@import "responsive-utilities.less";
+
+```
+
+2. 将所有的变量都放在了`variable.less`
+
+```
+//## Gray and brand colors for use across Bootstrap.
+
+@gray-base:              #000;
+@gray-darker:            lighten(@gray-base, 13.5%); // #222
+@gray-dark:              lighten(@gray-base, 20%);   // #333
+@gray:                   lighten(@gray-base, 33.5%); // #555
+@gray-light:             lighten(@gray-base, 46.7%); // #777
+@gray-lighter:           lighten(@gray-base, 93.5%); // #eee
+
+@brand-primary:         darken(#428bca, 6.5%); // #337ab7
+@brand-success:         #5cb85c;
+@brand-info:            #5bc0de;
+@brand-warning:         #f0ad4e;
+@brand-danger:          #d9534f;
+```
+
+3. 将所有的混合放入了 mixins 文件夹
+
+![1529395941979](C:\Users\王争\AppData\Local\Temp\1529395941979.png)
+
+`混合`本质上是一个类，类本质上是样式，
+
+less的`混合`当中类的特点：可以传参，参数之间用分号链接
+
+说白了，bootstrap当中，基础的样式都放在了 mixins 文件夹中
+
+![1529396182351](C:\Users\王争\AppData\Local\Temp\1529396182351.png)
+
+
+
+4. 如何将所有的bootstrap中的less文件编译成css文件
+
+1. npm init
+
+2. npm install --save-dev less
+
+3. node_modules/.bin/lessc  boostrap.less>css/bootstrap.css 
+
+   
+
+## 其他CSS预处理语言
+
+sass、stylus 这些都和less很类似

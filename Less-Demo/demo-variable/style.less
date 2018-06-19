@@ -1,0 +1,15 @@
+@import "./style-02.less";
+
+@width: 100px;
+@height: 200px;
+@color1: red;
+@color2: green;
+.box {
+    width: @width;
+    height: @height;
+    background-color: blue;
+    .border-radius(20px);
+}
+body {
+    background-color: mix(@color1, @color2);
+}
